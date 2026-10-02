@@ -17,6 +17,9 @@ analyzer:
     - "**/*.g.dart"
     - "**/*.config.dart"
     - generated/*
+    - "**/*.freezed.dart"
+    - "**/*.gen.dart"
+    - lib/config/env_config.dart
   errors:
     invalid_annotation_target: ignore
 linter:

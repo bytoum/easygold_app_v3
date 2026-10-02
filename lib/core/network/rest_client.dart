@@ -3,7 +3,8 @@ import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 part 'rest_client.g.dart';
 
-@RestApi(baseUrl: 'https://api.example.com') // Replace with your API base URL
+
+@RestApi(baseUrl: '') // Replace with your API base URL
 abstract class RestClient {
   @factoryMethod
   factory RestClient(Dio dio, {String? baseUrl}) = _RestClient;
