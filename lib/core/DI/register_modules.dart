@@ -24,5 +24,8 @@ abstract class InjectionModule {
   
   @lazySingleton
   RestClient get restClient => RestClient(dio(), baseUrl: EnvConfig.BASE_END_POINT);
+  
+  @lazySingleton
+  AppClient get appClient => AppClient(dio(), baseUrl: EnvConfig.BASE_END_POINT);
 
 }
