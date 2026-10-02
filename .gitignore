@@ -28,3 +28,6 @@ doc/api/
 *.config.dart
 *.g.dart
 *.freezed.dart
+
+# FVM Version Cache
+.fvm/
