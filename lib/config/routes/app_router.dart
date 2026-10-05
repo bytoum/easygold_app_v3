@@ -32,10 +32,10 @@ final appRouter = GoRouter(
   errorBuilder: (context, state) => NotFoundWidget(),
   redirect: (BuildContext context, GoRouterState state){
     // no need to redirect at all
-    final auth =  getIt<AuthCubit>();
-    if(!auth.isAuthenticated && state.uri.path != Routes.splash){
-      return Routes.signIn;
-    }
+    // final auth =  getIt<AuthCubit>();
+    // if(!auth.isAuthenticated && state.uri.path != Routes.splash){
+    //   return Routes.signIn;
+    // }
     return null;
   }
 );
