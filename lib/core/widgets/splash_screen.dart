@@ -1,6 +1,6 @@
 import 'package:easygold_app_v3/config/routes/app_router.dart';
 import 'package:easygold_app_v3/generated/assets.gen.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:go_router/go_router.dart';
 
 class SplashScreen extends StatefulWidget {

@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:easygold_app_v3/core/models/background_detail_model.dart';
+import 'package:easygold_app_v3/core/models/base_response.dart';
 import 'package:easygold_app_v3/core/models/contact_model.dart';
+import 'package:easygold_app_v3/core/models/login_data_model.dart';
 import 'package:easygold_app_v3/core/models/version_info_model.dart';
 import 'package:easygold_app_v3/core/models/version_model.dart';
 import 'package:injectable/injectable.dart';

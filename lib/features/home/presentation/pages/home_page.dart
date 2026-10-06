@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:easygold_app_v3/config/routes/app_router.dart';
 import 'package:easygold_app_v3/generated/locale_keys.g.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:go_router/go_router.dart';
 
 class HomePage extends StatelessWidget {
@@ -18,7 +18,7 @@ class HomePage extends StatelessWidget {
             SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
-                context.go(Routes.signIn);
+                context.push(Routes.signIn);
               },
               child: Text('Sign In'),
             ),

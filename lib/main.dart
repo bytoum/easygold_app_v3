@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:easygold_app_v3/core/services/asset_loader_service.dart';
 import 'package:easygold_app_v3/my_app.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 import 'core/DI/service_locator.dart';
 

@@ -4,6 +4,7 @@ import 'package:easygold_app_v3/config/env_config.dart';
 import 'package:easygold_app_v3/core/network/rest_client.dart';
 import 'package:easygold_app_v3/core/services/asset_loader_service.dart';
 import 'package:easygold_app_v3/core/services/dio_interceptor_service.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -12,6 +13,9 @@ abstract class InjectionModule {
   @preResolve // Async initialization
   Future<SharedPreferences> get prefs => SharedPreferences.getInstance();
 
+  @lazySingleton
+  FlutterSecureStorage get secureStorage => const FlutterSecureStorage();
+
   @singleton
   Dio get dio {
     final dio = Dio(
@@ -19,6 +23,7 @@ abstract class InjectionModule {
         baseUrl: EnvConfig.BASE_END_POINT,
         connectTimeout: const Duration(seconds: 10),
         receiveTimeout: const Duration(seconds: 10),
+        headers: {'Content-Type': 'application/json'},
       ),
     );
     // You can add interceptors here if needed
@@ -47,4 +52,8 @@ abstract class InjectionModule {
 
   @lazySingleton
   AppClient get appClient => AppClient(dio, baseUrl: EnvConfig.BASE_END_POINT);
+
+  @lazySingleton
+  AuthClient get authClient =>
+      AuthClient(dio, baseUrl: '${EnvConfig.BASE_END_POINT}/auth-service/api/v1/auth');
 }
