@@ -1,6 +1,5 @@
 import 'package:easygold_app_v3/core/constants/enums/data_status.dart';
 import 'package:easygold_app_v3/core/extensions/either_extension.dart';
-import 'package:easygold_app_v3/core/services/storage_service.dart';
 import 'package:easygold_app_v3/features/auth/domain/usecases/signin_with_password_usecase.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -10,10 +9,8 @@ part 'auth_cubit.freezed.dart';
 
 @injectable
 class AuthCubit extends Cubit<AuthState> {
-  AuthCubit(this._storageService, this._signinWithPasswordUsecase)
-    : super(const AuthState());
+  AuthCubit(this._signinWithPasswordUsecase) : super(const AuthState());
 
-  final StorageService _storageService;
   final SigninWithPasswordUsecase _signinWithPasswordUsecase;
 
   Future<void> initialize() async {
