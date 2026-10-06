@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:material_ui/material_ui.dart';
+
 class DioInterceptorService extends InterceptorsWrapper {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
@@ -11,7 +12,9 @@ class DioInterceptorService extends InterceptorsWrapper {
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
     // Add your custom logic here, e.g., logging responses
-    debugPrint('Response: ${response.statusCode} ${response.requestOptions.path}');
+    debugPrint(
+      'Response: ${response.statusCode} ${response.requestOptions.path}',
+    );
     super.onResponse(response, handler);
   }
 
@@ -21,5 +24,4 @@ class DioInterceptorService extends InterceptorsWrapper {
     debugPrint('Error: ${err.message} ${err.requestOptions.path}');
     super.onError(err, handler);
   }
-  
 }

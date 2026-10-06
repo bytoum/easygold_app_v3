@@ -3,6 +3,7 @@ import 'package:easygold_app_v3/core/models/version_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'version_info_model.freezed.dart';
 part 'version_info_model.g.dart';
+
 @freezed
 @JsonSerializable()
 class VersionInfoModel with _$VersionInfoModel {

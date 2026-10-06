@@ -27,6 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
       _opacity = 0;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +42,7 @@ class _SplashScreenState extends State<SplashScreen> {
         onEnd: () {
           context.go(Routes.home);
         },
-      )
+      ),
     );
   }
 }

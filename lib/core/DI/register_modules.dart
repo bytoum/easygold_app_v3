@@ -54,6 +54,8 @@ abstract class InjectionModule {
   AppClient get appClient => AppClient(dio, baseUrl: EnvConfig.BASE_END_POINT);
 
   @lazySingleton
-  AuthClient get authClient =>
-      AuthClient(dio, baseUrl: '${EnvConfig.BASE_END_POINT}/auth-service/api/v1/auth');
+  AuthClient get authClient => AuthClient(
+    dio,
+    baseUrl: '${EnvConfig.BASE_END_POINT}/auth-service/api/v1/auth',
+  );
 }

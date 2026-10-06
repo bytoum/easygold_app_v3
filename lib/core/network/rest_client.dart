@@ -11,8 +11,6 @@ part 'rest_client.g.dart';
 part 'app_client.dart';
 part 'auth_client.dart';
 
-
-
 @RestApi() // Replace with your API base URL
 abstract class RestClient {
   @factoryMethod

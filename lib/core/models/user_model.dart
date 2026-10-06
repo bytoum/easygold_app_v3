@@ -5,12 +5,10 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'user_model.freezed.dart';
 part 'user_model.g.dart';
 
-Object? _readId(
-  Map<dynamic, dynamic> json,
-  String key,
-) {
+Object? _readId(Map<dynamic, dynamic> json, String key) {
   return json['_id'] ?? json['id'];
 }
+
 @freezed
 abstract class UserModel with _$UserModel {
   @JsonSerializable(explicitToJson: true)
