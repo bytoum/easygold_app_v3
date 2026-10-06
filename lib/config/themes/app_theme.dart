@@ -3,7 +3,7 @@ import 'package:easygold_app_v3/config/themes/app_text_theme.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:easygold_app_v3/core/constants/app_colors.dart';
 
-ThemeData buildTheme(Brightness brightness){
+ThemeData buildTheme(Brightness brightness) {
   final colors = ColorScheme.fromSeed(
     seedColor: AppColors.primaryColor,
     brightness: brightness,

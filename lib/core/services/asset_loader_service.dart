@@ -26,9 +26,7 @@ class S3AssetLoaderService extends AssetLoader {
       if (credentials.accessKeyId.isNotEmpty == true &&
           credentials.secretAccessKey.isNotEmpty == true) {
         final filename = '${locale.toLanguageTag()}.json';
-        final signer = AWSSigV4Signer(
-          credentialsProvider: credentialsProvider,
-        );
+        final signer = AWSSigV4Signer(credentialsProvider: credentialsProvider);
         final request = AWSHttpRequest(
           method: AWSHttpMethod.get,
           uri: Uri.https('$bucket.s3.$region.amazonaws.com', '/$filename'),

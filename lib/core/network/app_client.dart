@@ -20,7 +20,6 @@ abstract class AppClient {
   @GET('/customer-service/contact-info/69a001ea749939c4c103a246')
   Future<ContactModel> getContact();
 
-
   @GET('/customer-service/social-media/69a00298749939c4c103a24c')
   Future<ContactModel> getSocialMedia();
 

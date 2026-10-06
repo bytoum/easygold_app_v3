@@ -6,7 +6,7 @@ import 'package:injectable/injectable.dart';
 
 final getIt = GetIt.instance;
 @injectableInit
-Future<void>configureDependencies() async {
+Future<void> configureDependencies() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   //TODO: Initial dependencies

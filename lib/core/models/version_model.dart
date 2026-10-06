@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'version_model.freezed.dart';
 part 'version_model.g.dart';
+
 @freezed
 @JsonSerializable()
 class VersionModel with _$VersionModel {
@@ -22,8 +23,8 @@ class VersionModel with _$VersionModel {
     this.isOpen,
   });
 
-  factory VersionModel.fromJson(Map<String, Object?> json)
-      => _$VersionModelFromJson(json);
+  factory VersionModel.fromJson(Map<String, Object?> json) =>
+      _$VersionModelFromJson(json);
 
-  Map<String, Object?> toJson() => _$VersionModelToJson(this);  
+  Map<String, Object?> toJson() => _$VersionModelToJson(this);
 }
