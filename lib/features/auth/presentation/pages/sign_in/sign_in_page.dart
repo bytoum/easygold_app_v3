@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:easygold_app_v3/core/constants/enums/data_status.dart';
 import 'package:easygold_app_v3/core/widgets/easy_loading_overlay.dart';
 import 'package:easygold_app_v3/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:easygold_app_v3/generated/locale_keys.g.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,10 +26,13 @@ class SignInPage extends StatelessWidget {
             break;
           case DataStatus.failure:
             EasyLoadingOverlay.dismiss();
-            final errorMessage = state.errorMessage ?? 'An error occurred';
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(errorMessage)),
-            );
+            final serverMessage = state.errorMessage;
+            final errorMessage =
+                (serverMessage != null && serverMessage.isNotEmpty)
+                ? serverMessage
+                : LocaleKeys.sign_in_failed.tr();
+            ScaffoldMessenger.of(context)
+                .showSnackBar(SnackBar(content: Text(errorMessage)));
             break;
           default:
             EasyLoadingOverlay.dismiss();
