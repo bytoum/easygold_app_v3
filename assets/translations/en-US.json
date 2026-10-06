@@ -1,5 +1,6 @@
 {
   "hello": "Hello",
   "welcome": "Welcome",
-  "loading": "Loading"
+  "loading": "Loading",
+  "sign_in_failed": "Unable to sign in. Please try again."
 }

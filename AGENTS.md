@@ -74,9 +74,6 @@ All are gitignored; do not `git add -f` them. `.env*` is gitignored except `.env
 
 ## Known issues (do not copy these patterns)
 
-- Bug: `AuthRemoteDataSourceImpl.signInWithPassword` passes `e.response?.data` (dynamic, often a JSON map)
-  into `ServerException(String)`, and `SignInPage` shows it in a snackbar. It can throw a type error and
-  can show raw server responses to users. Fix with a sanitized, localized message; do not copy it.
 - Risk: `AWS_ACCESS_KEY` / `AWS_SECRET_KEY` are compiled into the binary via `EnvConfig`
   (used by `S3AssetLoaderService`). Do not add AWS credentials or extend this path.
 

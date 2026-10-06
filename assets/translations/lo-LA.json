@@ -1,5 +1,6 @@
 {
   "hello": "Hello",
   "welcome": "Welcome",
-  "loading": "Loading"
+  "loading": "Loading",
+  "sign_in_failed": "ບໍ່ສາມາດເຂົ້າສູ່ລະບົບໄດ້. ກະລຸນາລອງໃໝ່ອີກຄັ້ງ."
 }
