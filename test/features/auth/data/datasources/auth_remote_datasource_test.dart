@@ -20,6 +20,22 @@ class _FakeAuthClient implements AuthClient {
   ) async => throw _error;
 }
 
+class _RecordingAuthClient implements AuthClient {
+  final calls = <List<Object?>>[];
+
+  @override
+  Future<BaseResponse<LoginDataModel>> signInWithPassword(
+    String? code,
+    String? fmcToken,
+    String isAllowPushNoti,
+    String uuid,
+    Map<String, dynamic> body,
+  ) async {
+    calls.add([code, fmcToken, isAllowPushNoti, uuid, body]);
+    return BaseResponse(data: const LoginDataModel(accessToken: 'token'));
+  }
+}
+
 DioException _dioError(Object? data, {int status = 401}) {
   final options = RequestOptions(path: '/signin');
   return DioException(
@@ -88,6 +104,53 @@ void main() {
     test('does not expose unexpected exception text', () async {
       final e = await _signInError(StateError('secret detail'));
       expect(e.message, '');
+    });
+  });
+
+  group('AuthRemoteDataSourceImpl.signInWithPassword success', () {
+    test('returns the response data', () async {
+      final dataSource = AuthRemoteDataSourceImpl(_RecordingAuthClient());
+
+      final result = await dataSource.signInWithPassword(
+        phoneNumber: '000',
+        password: 'test-password',
+        uuid: 'test-uuid',
+      );
+
+      expect(result, const LoginDataModel(accessToken: 'token'));
+    });
+
+    test('maps arguments onto the client call', () async {
+      final client = _RecordingAuthClient();
+
+      await AuthRemoteDataSourceImpl(client).signInWithPassword(
+        phoneNumber: '000',
+        password: 'test-password',
+        uuid: 'test-uuid',
+        code: 'test-code',
+        fmcToken: 'test-fmc',
+        isAllowPushNoti: true,
+      );
+
+      expect(client.calls.single, [
+        'test-code',
+        'test-fmc',
+        'true',
+        'test-uuid',
+        {'username': '000', 'password': 'test-password'},
+      ]);
+    });
+
+    test('isAllowPushNoti defaults to the string false', () async {
+      final client = _RecordingAuthClient();
+
+      await AuthRemoteDataSourceImpl(client).signInWithPassword(
+        phoneNumber: '000',
+        password: 'test-password',
+        uuid: 'test-uuid',
+      );
+
+      expect(client.calls.single[2], 'false');
     });
   });
 }
