@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:ui';
 
@@ -61,12 +62,26 @@ class S3AssetLoaderService extends AssetLoader {
         return await fallbackAssetLoader(path, locale);
       }
     } on DioException catch (e) {
-      EasyLocalization.logger.error('Failed to load asset from S3: $e');
-      EasyLocalization.logger.info(
-        'Falling back to local asset loader for locale: ${locale.toLanguageTag()}',
-      );
-      return await fallbackAssetLoader(path, locale);
+      return _fallbackAfterS3Failure(path, locale, e);
+    } on TimeoutException catch (e) {
+      return _fallbackAfterS3Failure(path, locale, e);
+    } on FormatException catch (e) {
+      return _fallbackAfterS3Failure(path, locale, e);
+    } on TypeError catch (e) {
+      return _fallbackAfterS3Failure(path, locale, e);
     }
+  }
+
+  Future<Map<String, dynamic>?> _fallbackAfterS3Failure(
+    String path,
+    Locale locale,
+    Object e,
+  ) async {
+    EasyLocalization.logger.error('Failed to load asset from S3: $e');
+    EasyLocalization.logger.info(
+      'Falling back to local asset loader for locale: ${locale.toLanguageTag()}',
+    );
+    return await fallbackAssetLoader(path, locale);
   }
 
   Future<Map<String, dynamic>?> fallbackAssetLoader(
