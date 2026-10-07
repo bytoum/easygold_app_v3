@@ -4,9 +4,8 @@ part 'contact_model.freezed.dart';
 part 'contact_model.g.dart';
 
 @freezed
-@JsonSerializable()
-class ContactModel with _$ContactModel {
-  const ContactModel({
+abstract class ContactModel with _$ContactModel {
+  const factory ContactModel({
     @JsonKey(name: "_id") String? id,
     @JsonKey(name: "contact_label") String? label,
     String? value,
@@ -16,34 +15,30 @@ class ContactModel with _$ContactModel {
     @JsonKey(name: "updated_by") String? updatedBy,
     @JsonKey(name: "created_at") DateTime? createdAt,
     @JsonKey(name: "updated_at") DateTime? updatedAt,
-  });
+  }) = _ContactModel;
 
   factory ContactModel.fromJson(Map<String, dynamic> json) =>
       _$ContactModelFromJson(json);
-  Map<String, dynamic> toJson() => _$ContactModelToJson(this);
 }
 
 @freezed
-@JsonSerializable()
-class TitleModel with _$TitleModel {
-  const TitleModel({
+abstract class TitleModel with _$TitleModel {
+  const factory TitleModel({
     @JsonKey(name: "_id") String? id,
     String? title,
     @JsonKey(name: "created_by") String? createdBy,
     @JsonKey(name: "updated_by") String? updatedBy,
     @JsonKey(name: "created_at") DateTime? createdAt,
     @JsonKey(name: "updated_at") DateTime? updatedAt,
-  });
+  }) = _TitleModel;
 
   factory TitleModel.fromJson(Map<String, dynamic> json) =>
       _$TitleModelFromJson(json);
-  Map<String, dynamic> toJson() => _$TitleModelToJson(this);
 }
 
 @freezed
-@JsonSerializable()
-class LocationModel with _$LocationModel {
-  const LocationModel({
+abstract class LocationModel with _$LocationModel {
+  const factory LocationModel({
     @JsonKey(name: "_id") String? id,
     @JsonKey(name: "location_name") String? name,
     @JsonKey(name: "address_text") String? address,
@@ -53,9 +48,8 @@ class LocationModel with _$LocationModel {
     @JsonKey(name: "updated_by") String? updatedBy,
     @JsonKey(name: "created_at") DateTime? createdAt,
     @JsonKey(name: "updated_at") DateTime? updatedAt,
-  });
+  }) = _LocationModel;
 
   factory LocationModel.fromJson(Map<String, dynamic> json) =>
       _$LocationModelFromJson(json);
-  Map<String, dynamic> toJson() => _$LocationModelToJson(this);
 }

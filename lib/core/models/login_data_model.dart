@@ -5,6 +5,7 @@ part 'login_data_model.g.dart';
 
 @freezed
 abstract class LoginDataModel with _$LoginDataModel {
+  @JsonSerializable(explicitToJson: true)
   const factory LoginDataModel({
     required String accessToken,
     String? financeManageCode,

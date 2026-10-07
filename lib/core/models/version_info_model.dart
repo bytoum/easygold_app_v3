@@ -5,15 +5,13 @@ part 'version_info_model.freezed.dart';
 part 'version_info_model.g.dart';
 
 @freezed
-@JsonSerializable()
-class VersionInfoModel with _$VersionInfoModel {
-  const VersionInfoModel({
+abstract class VersionInfoModel with _$VersionInfoModel {
+  @JsonSerializable(explicitToJson: true)
+  const factory VersionInfoModel({
     VersionModel? version,
     BackgroundDetailModel? background,
-  });
+  }) = _VersionInfoModel;
 
   factory VersionInfoModel.fromJson(Map<String, Object?> json) =>
       _$VersionInfoModelFromJson(json);
-
-  Map<String, Object?> toJson() => _$VersionInfoModelToJson(this);
 }
